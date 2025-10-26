@@ -642,6 +642,49 @@ footer {
              transition: font-size 0.3s ease;
                         }
 
+
+        /* ======== MENU MOBILE ======== */
+.menu-toggle {
+  display: none;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 1100;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-desktop {
+    display: none;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .menu-desktop.show {
+    display: flex;
+  }
+}
+                
+
     </style>
 </head>
 <body>
@@ -651,8 +694,10 @@ footer {
                 <img src="images/logoPagesync.jpg" alt="logotipo Pagesync" onerror="this.src=''; this.alt='Logo PageSync'; this.style.display='none';">
                 <span class="logo-text">PageSync</span>
             </section>
-
+            <button class="menu-toggle" aria-label="Abrir menu">☰</button>
             <nav class="menu-desktop">
+
+
                 <ul>
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#sobre">Sobre</a></li>
@@ -760,6 +805,18 @@ footer {
                 }
             });
         });
+
+        
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.menu-desktop');
+
+            menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('show');
+                // alterna o ícone ☰ ↔ ✖
+             menuToggle.textContent = menu.classList.contains('show') ? '✖' : '☰';
+            });
+</script>
+
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'994a7d59841e15b5',t:'MTc2MTQ4NzMyOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
